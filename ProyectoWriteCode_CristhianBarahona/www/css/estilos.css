@@ -1,0 +1,170 @@
+/*Estilos de Index*/
+
+#principal {
+    height: 600px;
+    background: url(../img/principal7.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.seccionCarousel {
+    height: 450px;
+    /*width: 1200px;*/
+}
+
+.tamanoCard {
+    width: 100px;
+    height: 100px;
+}
+
+.espacioImagen {
+    padding: 90px;
+}
+
+footer {
+    background-color: #F9F9F9;
+    height: 40px;
+}
+
+.icon-Facebook {
+    color: #416CA4;
+    font-size: 20px;
+}
+
+.icon-Twitter {
+    color: #00A3E2;
+    font-size: 20px;
+}
+
+.icon-Google {
+    color: #D24539;
+    font-size: 20px;
+}
+
+
+/*Estilos de login*/
+
+.espacio-container {
+    margin-top: 10px;
+}
+
+.contenido-registrar {
+    background-color: #F3F3F3;
+    /*margin-left: 120px;
+    margin-right: 120px;*/
+    margin: 50px 80px 50px 80px;
+    padding-top: 25px;
+}
+
+.fondo-registrar {
+    background-image: url(../img/principal6.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .responsive-img {
+        width: 100%;
+        height: auto;
+        /*box-sizing: border-box;*/
+        /* padding: 10px;*/
+    }
+}
+
+
+/*login*/
+
+.fondo-login {
+    background-image: url(../img/principal4.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-section {
+    margin: 0 auto;
+    margin-top: 130px;
+    padding: 0;
+}
+
+.modal-content {
+    background-color: #434e5a;
+    opacity: .8;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.user-img img {
+    height: 120px;
+    width: 120px;
+}
+
+.user-img {
+    margin-top: -60px;
+    margin-bottom: 45px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group input {
+    height: 42px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding-left: 54px;
+}
+
+
+/*.form-group::before {
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    content: "\f1fa";
+    position: absolute;
+    font-size: 22px;
+    left: 28px;
+    padding-top: 4px;
+    color: #555e60;
+}*/
+
+.form-group:last-of-type::before {
+    content: "\f023";
+}
+
+.form-input button {
+    width: 40%;
+    margin: 0 25px;
+}
+
+.btn-success {
+    background-color: #1c6288;
+    font-size: 19px;
+    border-radius: 5px;
+    padding: 7px 14px;
+    border: 1px solid #daf1ff;
+}
+
+.btn-success:hover {
+    background-color: #13445e;
+    border: 1px solid #daf1ff;
+}
+
+.forgot {
+    padding: 6px 0 25px;
+}
+
+.forgot a {
+    color: #daf1ff;
+}
