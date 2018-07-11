@@ -252,7 +252,7 @@ body {
 .barra-horizontal {
     background: #262a34;
     color: #fff;
-    padding: 25px 5px 32px 30px;
+    padding: 2px 5px 2px 5px;
 }
 
 .btn-outline-secondary {
@@ -265,4 +265,30 @@ body {
 .btn-outline-secondary:hover {
     background: #35ae6b;
     text-decoration: none;
+}
+
+@media screen and (max-width:1300px) {
+    .barra-lateral {
+        min-width: auto;
+    }
+    .barra-lateral .logo {
+        display: none;
+    }
+    .barra-lateral .menu a span {
+        display: none;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .barra-lateral {
+        min-height: auto;
+    }
+}
+
+.color-llenar {
+    color: white;
+}
+
+.linea-horizontal {
+    color: #434e5a;
 }
