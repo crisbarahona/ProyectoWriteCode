@@ -206,7 +206,8 @@ body {
 /* --- LOGO --- */
 
 .barra-lateral .logo {
-    background: #0275db;
+    /*background: #0275db;*/
+    background: #262a34;
     margin-bottom: 2px;
 }
 
@@ -225,9 +226,13 @@ body {
 .barra-lateral .menu a {
     display: block;
     padding: 20px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.icono-barra {
+    color: white;
+    margin-right: 10px;
 }
 
 .barra-lateral .menu a:hover {
@@ -238,4 +243,26 @@ body {
 .barra-lateral .menu a i {
     margin-right: 20px;
     font-weight: normal;
+    color: white;
+}
+
+
+/*-------------------------barra Horizontal------------------*/
+
+.barra-horizontal {
+    background: #262a34;
+    color: #fff;
+    padding: 25px 5px 32px 30px;
+}
+
+.btn-outline-secondary {
+    color: white;
+    background-color: grey;
+    background-image: none;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background: #35ae6b;
+    text-decoration: none;
 }

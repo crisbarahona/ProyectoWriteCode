@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>body</title>
+    <title>Dashboard</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,27 +21,66 @@
                     <div>
                         <h3><img src="img/logo.png" width="50px" height="50px" class="mr-3">WriteCode</h3>
                     </div>
-
                 </div>
+
                 <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-                    <a href="#"><i class="icon-home"></i><span>Mi unidad</span></a>
-                    <a href="#"><i class="icon-doc-text"></i><span>Compartir conmigo</span></a>
-                    <a href="#"><i class="icon-users"></i><span>Recientes</span></a>
-                    <a href="#"><i class="icon-cog-alt"></i><span>Destacado</span></a>
-                    <a href="#"><i class="icon-logout"></i><span>Editor de Texto</span></a>
-                    <a href="#"><i class="icon-logout"></i><span>Almacenamiento</span></a>
+                    <a href="#"><i class="fas fa-laptop icono-barra"></i><span>Mi unidad</span></a>
+                    <a href="#"><i class="fas fa-share-square icono-barra"></i><span>Compartir conmigo</span></a>
+                    <a href="#"><i class="far fa-clock icono-barra"></i><span>Recientes</span></a>
+                    <a href="#"><i class="fas fa-star icono-barra"></i><span>Destacado</span></a>
+                    <a href="#"><i class="fas fa-file-code icono-barra"></i><span>Editor de Texto</span></a>
+                    <a href="#"><i class="fas fa-hdd icono-barra"></i><span>Almacenamiento</span></a>
                 </nav>
             </div>
+
+            <div class="col">
+                <nav class="row navbar navbar-expand-md navbar-light barra-horizontal">
+                    <div class="collapse navbar-collapse" id="navbarPrincipal">
+                        <div class="col-lg-8">
+                            <div class="input-group">
+                                <input type="search" class="form-control" id="Buscar" placeholder="Buscar">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" style="border: none;">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi unidad</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-folder-open mr-2"></i><span>Nueva carpeta</span></a>
+                                        <hr>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-file-upload mr-2"></i><span>Subir archivos</span></a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-file-upload mr-2"></i><span>Subir carpetas</span></a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-right">
+                            <a href="#">
+                                <img src="img/persona2.jpg" width="40" height="40" class="rounded-circle" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                </nav>
+            </div>
+
+
         </div>
-    </div>
 
 
-
-
-    <script src="js/jquery-3.3.1.min.js "></script>
-    <script src="js/popper.min.js "></script>
-    <script src="js/bootstrap.min.js "></script>
-    <script src="js/fontAwesome.min.js"></script>
+        <script src="js/jquery-3.3.1.min.js "></script>
+        <script src="js/popper.min.js "></script>
+        <script src="js/bootstrap.min.js "></script>
+        <script src="js/fontAwesome.min.js"></script>
 </body>
 
 </html>
