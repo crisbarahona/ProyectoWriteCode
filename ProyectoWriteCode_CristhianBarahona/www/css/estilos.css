@@ -1,6 +1,6 @@
 /*Estilos de Index*/
 
-#principal {
+#imagen-bienvenida {
     height: 600px;
     background: url(../img/principal7.jpg);
     background-position: center;
@@ -83,7 +83,7 @@ footer {
 
 /*login*/
 
-.fondo-login {
+.imagen-fondo-login {
     background-image: url(../img/principal4.jpg);
     background-attachment: fixed;
     background-position: center;
