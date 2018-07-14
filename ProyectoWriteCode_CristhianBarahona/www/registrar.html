@@ -2,8 +2,8 @@
 <html lang="es">
 
 <head>
-    <title>login</title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Registrar Usuario</title>
+    <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--tengo que agregar-->
@@ -12,79 +12,63 @@
 </head>
 
 <body class="fondo-registrar">
-
-    <div class="container espacio-container ">
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class="jumbotron contenido-registrar ">
-                    <h4 class="mb-4 ">Registrar Nuevo Usuario</h4>
+                <div class="jumbotron margin-jumbotron ">
+                    <h2 class="display-5 mb-3">Crea tu cuenta para Write Code</h2>
+                    <p class="lead mb-4">para continuar, ingresa la siguiente informacion</p>
                     <form action="">
                         <div class="form-group row">
                             <div class="col-12 col-md-6 mb-3">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-user-edit "></i></span>
+                                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre">
+                                </div>
                             </div>
+
                             <div class="col-12 col-md-6 mb-3">
-                                <label for="pass">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-user-edit"></i></span>
+                                    <input type="text" class="form-control" placeholder="Apellido" name="apellido" id="apellido">
+                                </div>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="form-group row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for="mensaje">Mensaje</label>
-                                <textarea name="mensaje" id="mensaje" class="form-control"></textarea>
-                            </div>
-
-                            <div class="col-12 col-md-3 mb-3">
-                                <label>Sexo</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                            <input type="radio" name="sexo" id="hombre" class="form-check-input mr-2">Hombre
-                                        </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                            <input type="radio" name="sexo" id="mujer" class="form-check-input mr-2">Mujer
-                                        </label>
+                            <div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-envelope "></i></span>
+                                    <input type="text" class="form-control" placeholder="Correo electronico" name="correoElectronico" id="correoElectronico">
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3 mb-3">
-                                <label for="pais">Pais</label>
-                                <select name="pais" id="pais" class="form-control">
-                                        <option value="mexico">Mexico</option>
-                                        <option value="espana">España</option>
-                                        <option value="colombia">Colombia</option>
-                                    </select>
+                            <div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
+                                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" id="contrasena">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-12 text-center">
-                                <label class="form-check-label">
-                                        <input type="checkbox" name="terminos" id="terminos" class="form-check-input mr-2 mb-3">Acepto Terminos y Condiciones
-                                    </label>
-                                <div class="row justify-content-center">
-                                    <div class="col-12 col-sm-9 col-md-4">
-                                        <button class="btn btn-primary btn-block" type="submit">Enviar</button>
-                                    </div>
+                            <div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
+                                    <input type="password" class="form-control" placeholder="Confirmar contraseña" name="confirmarContrasena" id="confirmarContrasena">
                                 </div>
                             </div>
                         </div>
 
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-sm-9 col-md-4">
+                                <a class="btn btn-primary btn-block" href="body.html">Registrar</a>
+                            </div>
+                        </div>
                     </form>
-                    <div>
-                        <a href="#" class="btn btn-primary btn-lg">Leer Mas</a>
-                        <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-
-
-
     <!--Script que tengo que agregar-->
     <script src="js/jquery-3.3.1.min.js "></script>
     <script src="js/popper.min.js "></script>
