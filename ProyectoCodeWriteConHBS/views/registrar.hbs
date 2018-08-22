@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Registrar Usuario</title>
+    <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--tengo que agregar-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+
+
+</head>
+
+
+<body class="fondo-registrar">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron margin-jumbotron ">
+                    <h2 class="display-5 mb-3">Crea tu cuenta para Write Code</h2>
+                    <p class="lead mb-4">para continuar, ingresa la siguiente informacion</p>
+
+                    <form action="/registrar" method="POST">
+                        <div class="form-group row">
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-user-edit "></i></span>
+                                    <input type="text" class="form-control " placeholder="Nombre" name="nombre" id="nombre">
+                                    <!--<div id="mensaje1" class="errores">Ingrese su nombre</div>-->
+                                    <!--<div class="valid-feedback">Es bien</div>
+                                    <div class="invalid-feedback">Esta mal</div>-->
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-user-edit"></i></span>
+                                    <input type="text" class="form-control " placeholder="Apellido" name="apellido" id="apellido">
+                                    <!--<div id="mensaje2" class="errores">Ingrese su Apellido</div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "> <i class="fas fa-envelope "></i></span>
+                                    <input type="text" class="form-control" placeholder="Correo electronico" name="correoElectronico" id="correoElectronico">
+                                    <!--<div id="mensaje3" class="errores">Ingrese su Correo Electronico</div>-->
+                                </div>
+                            </div>
+
+                            <div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
+                                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" id="contrasena">
+                                    <!--<div id="mensaje4" class="errores">Ingrese su contraseña</div>-->
+                                </div>
+                            </div>
+
+                            <!--<div class="col mb-3">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
+                                    <input type="password" class="form-control" placeholder="Confirmar contraseña" name="confirmarContrasena" id="confirmarContrasena">
+                                </div>
+                            </div>-->
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-sm-9 col-md-4">
+                                <button  type="submit" class="btn btn-primary btn-block" id="btnRegistrar ">Registrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Script que tengo que agregar-->
+    <script src="js/jquery-3.3.1.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/fontAwesome.min.js "></script>
+    <script src="js/controlador.js"></script>
+    <!--<script src="../passport/passport.js"></script>-->
+</body>
+
+</html>
