@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Librerias-->
+    <script src="lib/codemirror.js"></script>
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/css/css.js"></script>
+    <script src="mode/xml/xml.js"></script>
+    <script src="addon\edit/closetag.js"></script>
+    <script src="addon/hint/show-hint.js"></script>
+    <script src="addon/hint/javascript-hint.js"></script>
+    <!--Referencias de los estilos del editor-->
+    <link rel="stylesheet" href="addon/hint/show-hint.css">
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <link rel="stylesheet" href="theme/rubyblue.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!--Nombre de la pagina-->
+    <title>Editor CodeWrite</title>
+
+</head>
+
+<body>
+    <h3>Bienvenidos al editor de CodeWrite</h3>
+    <hr>
+    <strong></strong>
+    <input type="text" class="form-control w-25" placeholder="Nombre de archivo" id="txt-nombreArchivo"><br>
+    <button type="button" class="btn btn-success mb-3" id="btn-guardar">Guardar archivo</button>
+    <textarea id="txta-codeWrite">
+
+    </textarea>
+    
+    <!--Script que tengo que agregar-->
+    <script src="js/jquery-3.3.1.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/fontAwesome.min.js "></script>
+    <script src="js/codeWrite.js"></script>
+    
+    
+</body>
+
+</html>
