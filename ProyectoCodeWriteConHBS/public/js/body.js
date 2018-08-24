@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    cargarTablero()
+});
+
+function cargarTablero() {
     $.ajax({
         url: "/miUnidad",
         method: "GET",
@@ -8,7 +12,7 @@ $(document).ready(function() {
             //tbody.html(''); //limpiar
             response.forEach((respuesta, index) => {
                 tbody.append(`
-                    <tr>
+                    <tr idEliminar=${respuesta.codigo_archivo}">
                         <th scope="row">${index + 1}</th>
                         <td> 
                             ${respuesta.nombre_archivo}
@@ -27,11 +31,9 @@ $(document).ready(function() {
         }
 
     });
-});
-
-
+}
 //Boton Eliminar
-$(document).on('click', '.eliminarArchivo', function() {
+/*$(document).on('click', '.eliminarArchivo', function() {
     let elemento = $(this)[0];
     id = $(elemento).attr("idEliminar")
     $.ajax({
@@ -39,6 +41,22 @@ $(document).on('click', '.eliminarArchivo', function() {
         method: "DELETE",
         success: function(response) {
             console.log(response)
+            cargarTablero();
+        }
+    })
+
+})*/
+
+(document).on('click', '.eliminarArchivo', function() {
+    let elemento = $(this)[0].parentElement.parentElement;
+    id = $(elemento).attr("idEliminar")
+
+    $.ajax({
+        url: "/eliminarArchivo/" + id,
+        method: "DELETE",
+        success: function(response) {
+            console.log(response)
+            cargarTablero();
         }
     })
 

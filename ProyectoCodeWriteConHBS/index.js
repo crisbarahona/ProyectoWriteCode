@@ -83,14 +83,37 @@ app.get("/miUnidad", function(req, res) {
     );
 });
 
-
-//Delete
+//Boton Eliminar archivo del Tablero de Mi Unidad
 app.delete("/eliminarArchivo/:id", function(req, res) {
     const { id } = req.params;
     console.log(id);
     conexion.query(
-        //aqui me espero
-        "DELETE FROM tbl_archivo WHERE codigo_archivo=?"
+        "SELECT codigo_archivo, Archivo FROM tbl_archivo WHERE codigo_archivo = ?", [id],
+        function(err, response) {
+            if (err) {
+                throw err
+            } else {
+                EditorArchivo = response[0].Archivo;
+
+                fs.unlink(EditorArchivo, function(err) {
+                    if (err) {
+                        throw err
+                    } else {
+                        conexion.query("DELETE FROM tbl_archivo WHERE codigo_archivo=?", [id],
+                            function(err, resultado) {
+                                if (err) {
+                                    throw err
+                                } else {
+                                    res.send(resultado)
+                                }
+
+                            })
+                    }
+                })
+
+            }
+
+        }
     );
 })
 
@@ -116,6 +139,7 @@ function limitarRuta(req, res, next) {
     res.redirect('/');
 }
 
+//Insertar Archivos (Editor CodeWrite)
 app.post("/codeWrite", function(req, res) {
     let codigoPropietario = req.session.passport.user;
     const { nombre, codigoEditor } = req.body; //guardar nombre y contenido
