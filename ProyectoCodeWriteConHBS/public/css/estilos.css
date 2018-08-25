@@ -310,3 +310,9 @@
         padding: 10px;
         position: absolute;
     }
+    /*papelera de reciclaje*/
+    
+    .iconoPapelera {
+        font-size: 30px;
+        padding-left: 40px;
+    }

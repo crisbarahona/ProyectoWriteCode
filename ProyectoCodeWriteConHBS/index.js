@@ -23,10 +23,10 @@ require("./passport/passport")(passport);
 //Exponer una carpeta como publica, unicamente para archivos estaticos: .html, imagenes, .css, .js
 app.use(express.static(path.join(__dirname, "public")));
 
-//declaro el motor de plantillas a utilizar
+//motor de plantillas a utilizar
 app.set("view engine", "hbs");
 
-//coloco los middleware
+//middleware
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -63,15 +63,31 @@ app.get("/body", limitarRuta, function(req, res) {
     res.render("body", { user: req.user });
 });
 
+app.get("/adquirirAlmacenamiento", function(req, res) {
+    res.render("adquirirAlmacenamiento");
+});
+
 //ruta del editor--codeWrite 
 app.get("/codeWrite", function(req, res) {
     res.render("codeWrite");
 });
 
+//ruta descargar
+app.get("/descargarArchivo/:id", function(req, res) {
+        res.download(__dirname + '/cargar/' + req.params.id),
+            function(err) {
+                if (err) {
+                    throw err;
+                } else {
+                    console.log("Listo")
+                }
+            }
+    })
+    //archivos de mi unidad
 app.get("/miUnidad", function(req, res) {
     let codigoUsuario = req.session.passport.user;
     conexion.query(
-        "SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ?", [codigoUsuario],
+        "SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? and condicion = 1", [codigoUsuario],
         function(err, resultado) {
             if (err) {
                 throw err;
@@ -82,6 +98,10 @@ app.get("/miUnidad", function(req, res) {
         }
     );
 });
+
+
+
+
 
 //Actualizar
 app.put("/destacado/:id/:estado", function(req, res) {
@@ -97,6 +117,7 @@ app.put("/destacado/:id/:estado", function(req, res) {
         });
 });
 
+//destacados
 app.get("/destacado", function(req, res) {
     let usuario = req.session.passport.user;
     conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? AND destacado =?", [usuario, true], function(err, response) {
@@ -107,6 +128,46 @@ app.get("/destacado", function(req, res) {
         }
     });
 });
+
+//papelera de reciclaje ********************************
+app.get("/papeleraReciclaje", function(req, res) {
+    let usuario = req.session.passport.user;
+    conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE  condicion =0 AND codigo_propietario = ?", [usuario], function(err, resultado) {
+        if (err) {
+            throw err
+        } else {
+            res.send(resultado);
+        }
+    })
+})
+
+
+//<ELIMINAR> enviar a papelera******
+app.post("/enviaAPapelera", function(req, res) {
+    let id = req.body.id;
+    conexion.query("UPDATE tbl_archivo set condicion=?, destacado=?  WHERE codigo_archivo = ?", [false, false, id],
+        function(err, response) {
+            if (err) {
+                throw err
+            } else {
+                console.log(response);
+            }
+        });
+
+})
+
+//restaurar de la papelera****
+app.post("/restaurarArchivo", function(req, res) {
+    let id = req.body.id;
+    conexion.query("UPDATE tbl_archivo set condicion=?  WHERE codigo_archivo = ?", [true, id],
+        function(err, response) {
+            if (err) {
+                throw err
+            } else {
+                console.log(response);
+            }
+        });
+})
 
 app.get("/visualizarDestacados", function(req, res) {
     let propietario = req.session.passport.user;
@@ -121,8 +182,8 @@ app.get("/visualizarDestacados", function(req, res) {
         })
 })
 
-//Boton Eliminar archivo del Tablero de Mi Unidad
-app.delete("/eliminarArchivo/:id", function(req, res) {
+//Boton Eliminar archivo del Tablero de Mi Unidad****************************
+/*app.delete("/eliminarArchivo/:id", function(req, res) {
     const { id } = req.params;
     console.log(id);
     conexion.query(
@@ -153,7 +214,7 @@ app.delete("/eliminarArchivo/:id", function(req, res) {
 
         }
     );
-})
+})*/
 
 //post
 app.post("/registrar", passport.authenticate("registroEstrategia", {
@@ -204,4 +265,4 @@ app.post("/codeWrite", function(req, res) {
 //Crear y levantar el servidor web.
 app.listen(4500);
 console.log("Servidor iniciado");
-////////////////////////////////////////
+////////////////////////////////////////ñ0

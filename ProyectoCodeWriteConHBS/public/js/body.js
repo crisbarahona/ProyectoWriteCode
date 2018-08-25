@@ -1,7 +1,8 @@
+//funcion de carga el contenido en el tablero de body
 $(document).ready(function() {
     cargarTablero()
 });
-
+//cargar tablero
 function cargarTablero() {
     var css;
     $.ajax({
@@ -29,9 +30,12 @@ function cargarTablero() {
 
                         <td>
                             <button class="btn btn-primary verArchivo" >Ver mas</button>
+
                             <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Eliminar</button>
+
                             <button idDestacado=${respuesta.codigo_archivo} type="button" class="btn destacado ${css}">Destacado</button>
-                            <button idDescargar=${respuesta.codigo_archivo} type="button" class="btn btn-secondary ">Descargar</button>
+
+                            <a href="/descargarArchivo/"><button idDescargar=${respuesta.codigo_archivo} type="button" class="btn btn-secondary ">Descargar</button></a>
                         </td>
                     </tr>
                 `)
@@ -78,10 +82,61 @@ $(document).on("click", ".destacado", function() {
     })
 });
 
+// //boton de almacenamiento
+$("#almacenamiento").click(function() {
 
-//visualizar destacados
+})
+
+// //boton de compartir conmigo
+$("#compartirConmigo").click(function() {
+
+})
+
+//Papelera de reciclaje
+$("#papeleraReciclaje").click(function() {
+    console.log("estoy aqui")
+    $.ajax({
+        url: "/papeleraReciclaje",
+        method: "GET",
+        success: function(response) {
+            let tbody = $('tbody'); // llenado de la tabla
+            //tbody.html(''); //limpiar
+            tbody.html("")
+            console.log(response)
+            response.forEach((respuesta, index) => {
+                tbody.append(`
+                    <tr idEliminar=${respuesta.codigo_archivo}">
+                        <th scope="row">${index + 1}</th>
+                        <td> 
+                            ${respuesta.nombre_archivo}
+                        </td>
+                        <td>
+                            ${respuesta.fecha_creacion}
+                        </td>
+
+                        <td>
+                            <button idEliminarRaiz=${respuesta.codigo_archivo} " class="btn btn-danger eliminarRaiz">Eliminar</button>
+                            <button idRestaurar=${respuesta.codigo_archivo} type="button" class="btn  restaurarArchivo">Restaurar</button>
+                        </td>
+                    </tr>
+                `)
+            });
+
+        }
+
+    })
+})
+
+
+
+//Descargar archivo
 //////////////////////////////////
-
+/*$("#idDescargar").click(function(){
+    $.ajax({
+        url: "/descargarArchivo/" + id,
+        method: "GET",
+    });
+})*/
 
 //al momento de darle click en el div "mi unidad " en el tablero
 $("#miUnidad").click(function() {
@@ -89,9 +144,9 @@ $("#miUnidad").click(function() {
     cargarTablero();
 });
 
-$(document).on('click', '.eliminarArchivo', function() {
+$(document).on('click', '.eliminarRaiz', function() {
     let elemento = $(this)[0].parentElement.parentElement;
-    id = $(elemento).attr("idEliminar")
+    id = $(elemento).attr("idEliminarRaiz")
 
     $.ajax({
         url: "/eliminarArchivo/" + id,
@@ -103,6 +158,43 @@ $(document).on('click', '.eliminarArchivo', function() {
     })
 
 });
+
+
+//eliminar archivo a papelera
+$(document).on("click", ".eliminarArchivo", function() {
+    let archivo = $(this)[0];
+    let id = $(archivo).attr("idEliminar");
+    let parametros = { id }
+    $.ajax({
+        url: "/enviaAPapelera",
+        method: "POST",
+        data: parametros,
+        dataType: "json",
+        success: function(response) {
+            $("#miUnidad").html("");
+            cargarTablero();
+        }
+    })
+})
+
+//Boton restaurar archivos de papelera a mi unidad
+$(document).on("click", ".restaurarArchivo", function() {
+    let archivoRestaurar = $(this)[0];
+    let id = $(archivoRestaurar).attr("idRestaurar")
+    let parametros = { id }
+    $.ajax({
+        url: "/restaurarArchivo",
+        data: parametros,
+        dataType: "json",
+        method: "POST",
+        success: function(response) {
+
+        }
+    })
+})
+
+
+//Boton destacados
 $("#destacado").click(function() {
     // $("tbody").html("")
     $.ajax({
@@ -137,4 +229,4 @@ $("#destacado").click(function() {
             });
         }
     })
-})
+});

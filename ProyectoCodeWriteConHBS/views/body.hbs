@@ -22,10 +22,8 @@
                         <!--<h5>
                             <img src="img/logo2.png" width="75px" height="75px" class="mr-3 rounded-circle img-thumbnail">Bienvenid@ 
                         </h5>-->
-                            <img src="img/logo2.png" width="75px" height="75px" class="mr-3 rounded-circle img-thumbnail">
-                        <h5>Bienvenid@ {{user.nombre}} </h5>
-                        
-
+                            <img src="img/logo2.png" width="75px" height="75px" class="mb-2  rounded-circle img-thumbnail">
+                        <h5 class="">Bienvenid@ {{user.nombre}} </h5>
                     </div>
                 </div>
 
@@ -34,7 +32,7 @@
                         <i class="fas fa-laptop icono-barra" id="miUnidad"></i>
                         <span>Mi unidad</span>
                     </a>
-                    <a href="#">
+                    <a id="compartirConmigo">
                         <i class="fas fa-share-square icono-barra"></i>
                         <span>Compartir conmigo</span>
                     </a>
@@ -47,7 +45,7 @@
                         <i class="fas fa-file-code icono-barra"></i>
                         <span>Editor de Texto</span>
                     </a>
-                    <a href="#">
+                    <a id="almacenamiento">
                         <i class="fas fa-hdd icono-barra"></i>
                         <span>Almacenamiento</span>
                     </a>
@@ -73,17 +71,17 @@
                         </div>
                         <div class="col-lg-4  imagen text-right" style="margin-top: 5px;
                         margin-bottom: 5px;">
-                            <a href="#">
-                                <i class="fas fa-users mr-3"></i>
-                            </a>
+                
                             <a href="#">
                                 <i class="fas fa-bell mr-3"></i>
                             </a>
                             <a href="#">
                                 <i class="fas fa-comments mr-3"></i>
-                            </a>
-                            <a href="#" class="imagen mr-3">
-                                <img src="img/profile.jpg" width="27px" height="27px" alt="">
+                            </a> 
+
+                            <a href="#" class="imagen  mr-3">
+                                
+                                <img src="img/profile.jpg" width="27px" height="27px" class="mr-3">{{user.nombre}} {{user.apellido}}
                             </a>
                         </div>
                     </div>
@@ -119,6 +117,15 @@
                                     </a>
                                 </div>
                             </div>
+
+
+                            <a class="iconoPapelera" id="papeleraReciclaje">
+                                <i  class="fas fa-trash-alt"></i>
+                            </a>
+                            <!--papelera de reciclaje-->
+                            {{!-- <spam class="iconoPapelera" id="papeleraReciclaje">
+                                <i class="fas fa-trash-alt"></i>
+                            </spam> --}}
                         </div>
 
                     </div>
@@ -133,7 +140,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            {{!--con javaScript se actualizara  --}}
                         </tbody>
                     </table>
                 </section>

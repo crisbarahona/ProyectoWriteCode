@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/logo2.png" class=" rounded-circle img-thumbnail" type="image/x-icon">
     <!--Librerias-->
     <script src="lib/codemirror.js"></script>
     <script src="lib/codemirror.js"></script>
@@ -19,6 +20,9 @@
     <link rel="stylesheet" href="lib/codemirror.css">
     <link rel="stylesheet" href="theme/rubyblue.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilosEditor.css">
+    
+
 
     <!--Nombre de la pagina-->
     <title>Editor CodeWrite</title>
@@ -26,11 +30,14 @@
 </head>
 
 <body>
-    <h3>Bienvenidos al editor de CodeWrite</h3>
-    <hr>
-    <strong></strong>
-    <input type="text" class="form-control w-25" placeholder="Nombre de archivo" id="txt-nombreArchivo"><br>
-    <button type="button" class="btn btn-success mb-3" id="btn-guardar">Guardar archivo</button>
+    <header class="text-center">
+        <img src="img/logo2.png" width="75px" height="75px" class="mr-3 rounded-circle img-thumbnail ">
+        <h3 class="text-center">Bienvenido al editor de CodeWrite</h3>
+    </header>
+               
+    <strong class="ml-3" >Ingrese el nombre del archivo</strong>
+    <input type="text" class="form-control w-25 ml-3 mt-2" placeholder="Nombre de archivo" id="txt-nombreArchivo"><br>
+    <button type="button" class="btn btn-success mb-3 ml-3" id="btn-guardar">Guardar archivo</button>
     <textarea id="txta-codeWrite">
 
     </textarea>
