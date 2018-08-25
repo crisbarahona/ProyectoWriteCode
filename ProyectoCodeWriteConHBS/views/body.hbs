@@ -3,10 +3,9 @@
 
 <head>
     <title>TableroCodeWrite</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--tengo que agregar-->
+    <!--librerias-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link href="css/fontAwesome.min.css" rel="stylesheet">
@@ -19,14 +18,12 @@
             <div class="barra-lateral col-12 col-sm-auto">
                 <div class="logo text-center mt-1">
                     <div >
-                        <!--<h5>
-                            <img src="img/logo2.png" width="75px" height="75px" class="mr-3 rounded-circle img-thumbnail">Bienvenid@ 
-                        </h5>-->
+                            <!--head-->
                             <img src="img/logo2.png" width="75px" height="75px" class="mb-2  rounded-circle img-thumbnail">
                         <h5 class="">Bienvenid@ {{user.nombre}} </h5>
                     </div>
                 </div>
-
+                <!--divs de la barra lateral del tablero-->
                 <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
                     <a id="miUnidad">
                         <i class="fas fa-laptop icono-barra" id="miUnidad"></i>
@@ -59,16 +56,15 @@
                         <i class="fas fa-power-off icono-barra"></i>
                         <span>Cerrar sesión</span>
                     </a>
-
                 </nav>
             </div>
-
+            <!--perfil-->
             <div class="col">
                 <nav class="row navbar navbar-expand-md navbar-light barra-horizontal">
                     <div class="collapse navbar-collapse" id="navbarPrincipal">
                         <div class="col-lg-8">
-
                         </div>
+                        <!--perfil-->
                         <div class="col-lg-4  imagen text-right" style="margin-top: 5px;
                         margin-bottom: 5px;">
                 
@@ -81,12 +77,13 @@
 
                             <a href="#" class="imagen  mr-3">
                                 
-                                <img src="img/profile.jpg" width="27px" height="27px" class="mr-3">{{user.nombre}} {{user.apellido}}
+                                <img src="img/profile.jpg" width="27px" height="27px" class="mr-3">
+                                <spam >{{user.nombre}} {{user.apellido}}</spam>
                             </a>
                         </div>
                     </div>
                 </nav>
-
+                <!--caja de texto de buscar-->
                 <section class="col">
                     <div class="col-lg-8">
                         <div class="input-group mt-3">
@@ -97,7 +94,7 @@
                                 </button>
                             </div>
                         </div>
-
+                        <!--boton mi unidad-->
                         <div class="input-group mt-3 mb-3">
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi unidad</button>
@@ -117,41 +114,35 @@
                                     </a>
                                 </div>
                             </div>
-
-
+                            <!--icono que redirige a papelera-->
                             <a class="iconoPapelera" id="papeleraReciclaje">
                                 <i  class="fas fa-trash-alt"></i>
                             </a>
-                            <!--papelera de reciclaje-->
-                            {{!-- <spam class="iconoPapelera" id="papeleraReciclaje">
-                                <i class="fas fa-trash-alt"></i>
-                            </spam> --}}
                         </div>
-
                     </div>
+                    <!--tabla de mostrar archivos-->
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre del archivo</th>
                                 <th scope="col">Fecha de creacion</th>
-                                <th scope="col">Acciones</th>
-                                
+                                <th scope="col">Acciones</th>                                
                             </tr>
                         </thead>
                         <tbody>
-                            {{!--con javaScript se actualizara  --}}
+                            {{!--javaScript  --}}
                         </tbody>
                     </table>
                 </section>
             </div>
         </div>
     </div>
+    <!--scripts-->
     <script src="js/jquery-3.3.1.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/fontAwesome.min.js"></script>
     <script src="js/bootstrap.min.js "></script>
     <script src="js/body.js"></script>
 </body>
-
 </html>

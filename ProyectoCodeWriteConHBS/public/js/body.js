@@ -31,7 +31,7 @@ function cargarTablero() {
                         <td>
                             <button class="btn btn-primary verArchivo" >Ver mas</button>
 
-                            <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Eliminar</button>
+                            <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Papelera</button>
 
                             <button idDestacado=${respuesta.codigo_archivo} type="button" class="btn destacado ${css}">Destacado</button>
 
@@ -45,19 +45,19 @@ function cargarTablero() {
     });
 }
 //Boton Eliminar
-/*$(document).on('click', '.eliminarArchivo', function() {
-    let elemento = $(this)[0];
-    id = $(elemento).attr("idEliminar")
-    $.ajax({
-        url: "/eliminarArchivo/" + id,
-        method: "DELETE",
-        success: function(response) {
-            console.log(response)
-            cargarTablero();
-        }
-    })
+// $(document).on('click', '.eliminarArchivo', function() {
+//     let elemento = $(this)[0];
+//     id = $(elemento).attr("idEliminar")
+//     $.ajax({
+//         url: "/eliminarArchivo/" + id,
+//         method: "DELETE",
+//         success: function(response) {
+//             console.log(response)
+//             cargarTablero();
+//         }
+//     })
 
-})*/
+
 
 //boton destacado
 $(document).on("click", ".destacado", function() {
@@ -84,11 +84,12 @@ $(document).on("click", ".destacado", function() {
 
 // //boton de almacenamiento
 $("#almacenamiento").click(function() {
-
+    //$("table").html("");
 })
 
 // //boton de compartir conmigo
 $("#compartirConmigo").click(function() {
+    // $("tbody").html("");
 
 })
 
@@ -127,8 +128,6 @@ $("#papeleraReciclaje").click(function() {
     })
 })
 
-
-
 //Descargar archivo
 //////////////////////////////////
 /*$("#idDescargar").click(function(){
@@ -144,19 +143,19 @@ $("#miUnidad").click(function() {
     cargarTablero();
 });
 
+//boton de eliminar en el boton de la papelera
 $(document).on('click', '.eliminarRaiz', function() {
-    let elemento = $(this)[0].parentElement.parentElement;
+    let elemento = $(this)[0]
     id = $(elemento).attr("idEliminarRaiz")
-
     $.ajax({
         url: "/eliminarArchivo/" + id,
         method: "DELETE",
         success: function(response) {
             console.log(response)
-            cargarTablero();
         }
     })
-
+    $("tbody").html("")
+    $("#papeleraReciclaje").click()
 });
 
 
@@ -170,11 +169,11 @@ $(document).on("click", ".eliminarArchivo", function() {
         method: "POST",
         data: parametros,
         dataType: "json",
-        success: function(response) {
-            $("#miUnidad").html("");
-            cargarTablero();
-        }
+        success: function(response) {}
+
     })
+    $("tbody").html("");
+    cargarTablero();
 })
 
 //Boton restaurar archivos de papelera a mi unidad
@@ -191,8 +190,9 @@ $(document).on("click", ".restaurarArchivo", function() {
 
         }
     })
+    $("tbody").html("");
+    $("#papeleraReciclaje").click()
 })
-
 
 //Boton destacados
 $("#destacado").click(function() {
@@ -220,7 +220,7 @@ $("#destacado").click(function() {
 
                         <td>
                             <button class="btn btn-primary verArchivo" >Ver mas</button>
-                            <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Eliminar</button>
+                            <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Papelera</button>
                             <button idDestacado=${respuesta.codigo_archivo} type="button" class="btn destacado btn-warning">Destacado</button>
                             <button idDescargar=${respuesta.codigo_archivo} type="button" class="btn btn-secondary ">Descargar</button>
                         </td>

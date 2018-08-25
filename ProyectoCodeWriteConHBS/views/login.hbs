@@ -3,14 +3,13 @@
 
 <head>
     <title>login</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--tengo que agregar-->
+    <!--Logo-->
+    <link rel="shortcut icon" href="img/logo2.png" class=" rounded-circle img-thumbnail" type="image/x-icon">
+    <!--Librerias-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <!-- <link href="css/fontAwesome.min.css" rel="stylesheet"> -->
-    <link rel="shortcut icon" href="img/logo2.png" class=" rounded-circle img-thumbnail" type="image/x-icon">
 </head>
 
 <body class="imagen-fondo-login">
@@ -20,44 +19,60 @@
                 <div class="col-12 user-img ">
                     <img src="img/logo2.png" class="rounded-circle img-thumbnail">
                 </div>
-
-                <form action="/login" method="POST">
+                <!--Formulario de login-->
+                <form action="/login" method="POST" class="needs-validation" novalidate>
                     <div class="col-12 form-input ">
                         <div class="input-group mb-3 ">
                             <div class="input-group-prepend ">
-                                <span class="input-group-text "> <i class="fas fa-envelope "></i></span>
+                                <span class="input-group-text ">
+                                    <i class="fas fa-envelope "></i>
+                                </span>
                             </div>
-                            <input type="email " class="form-control " placeholder="Ingrese correo " name="correo">
+                            <!--caja de texto de correo electronico-->
+                            <input type="email " class="form-control " placeholder="Ingrese correo " name="correo" required>
+                            <div class="valid-feedback">
+                                correo electronico correcto!
+                            </div>
+                            <div class="invalid-feedback">
+                                correo electronico incorrecto!
+                            </div>
                         </div>
-
+                        <!--caja de texto de contrasena-->
                         <div class="input-group ">
                             <div class="input-group-prepend ">
-                                <span class="input-group-text "><i class="fas fa-key "></i></span>
+                                <span class="input-group-text ">
+                                    <i class="fas fa-key "></i>
+                                </span>
                             </div>
-                            <input type="password" class="form-control " placeholder="Ingrese contraseña " name="contrasena">
+                            <input type="password" class="form-control " placeholder="Ingrese contraseña " name="contrasena" required>
+                            <div class="valid-feedback">
+                                contraseña correcta!
+                            </div>
+                            <div class="invalid-feedback">
+                                contraseña incorrecta!
+                            </div>
                         </div>
-
-                        <button class="btn btn-success mt-4 ">Accesar</button>
-
-                    </div> 
+                        <!--boton de accesar-->
+                        <button class="btn btn-success mt-4 " type="submit">Accesar</button>
+                    </div>
                 </form>
-
+                <!--link/ruta que redirecciona al formulario registrar-->
                 <div class="col-12 forgot">
-                    <a href="/registrar">Registrarse</a>
+                    <a href="/registrar" >Registrarse</a>
                     <br>
                     <hr class="color-hr">
+                    <!--redireccionara al centro de ayuda para recuperar contrasena-->
                     <a href="#">¿Olvidaste la contraseña?</a>
                 </div>
             </div>
         </div>
     </div>
-
+    <!--Scrips-->
     <script src="js/jquery-3.3.1.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/bootstrap.min.js "></script>
     <script src="js/fontAwesome.min.js "></script>
-    <!-- <script type="text/javascript " src="js/particles.min.js "></script>
-    <script type="text/javascript " src="js/app.js "></script> -->
-
+    <script src="js/validaciones.js"></script>
 </body>
+
 </html>

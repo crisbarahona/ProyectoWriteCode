@@ -10,6 +10,8 @@ var editorCodeWrite = CodeMirror.fromTextArea(document.getElementById("txta-code
         autoCloseTags: true
     },
 );
+
+//boton guardar
 var btnGuardar = document.getElementById("btn-guardar");
 btnGuardar.addEventListener("click", function() {
     let codigoEditor = editorCodeWrite.getValue();

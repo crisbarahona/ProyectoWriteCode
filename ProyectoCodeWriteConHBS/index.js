@@ -23,12 +23,14 @@ require("./passport/passport")(passport);
 //Exponer una carpeta como publica, unicamente para archivos estaticos: .html, imagenes, .css, .js
 app.use(express.static(path.join(__dirname, "public")));
 
-//motor de plantillas a utilizar
+//motor de plantillas 
 app.set("view engine", "hbs");
 
 //middleware
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(session({
     secret: "secret",
     resave: false,
@@ -39,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+//cerrar sesion
 app.get('/logout', function(req, res) {
     req.logout();
     res.redirect("/");
@@ -60,31 +63,35 @@ app.get("/registrar", function(req, res) {
 });
 
 app.get("/body", limitarRuta, function(req, res) {
-    res.render("body", { user: req.user });
+    res.render("body", {
+        user: req.user
+    });
 });
-
+//ruta de adquirir almacenamiento
 app.get("/adquirirAlmacenamiento", function(req, res) {
     res.render("adquirirAlmacenamiento");
 });
 
 //ruta del editor--codeWrite 
-app.get("/codeWrite", function(req, res) {
+app.get("/codeWrite", limitarRuta, function(req, res) {
     res.render("codeWrite");
 });
 
 //ruta descargar
-app.get("/descargarArchivo/:id", function(req, res) {
-        res.download(__dirname + '/cargar/' + req.params.id),
-            function(err) {
-                if (err) {
-                    throw err;
-                } else {
-                    console.log("Listo")
-                }
+app.get("/descargarArchivo/:id", limitarRuta, function(req, res) {
+    res.download(__dirname + '/cargar/' + req.params.id),
+        function(err) {
+            if (err) {
+                throw err;
+            } else {
+                console.log("Listo")
+
             }
-    })
-    //archivos de mi unidad
-app.get("/miUnidad", function(req, res) {
+        }
+})
+
+//archivos de mi unidad
+app.get("/miUnidad", limitarRuta, function(req, res) {
     let codigoUsuario = req.session.passport.user;
     conexion.query(
         "SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? and condicion = 1", [codigoUsuario],
@@ -99,12 +106,8 @@ app.get("/miUnidad", function(req, res) {
     );
 });
 
-
-
-
-
 //Actualizar
-app.put("/destacado/:id/:estado", function(req, res) {
+app.put("/destacado/:id/:estado", limitarRuta, function(req, res) {
     let id = req.params.id;
     let estado = req.params.estado;
     conexion.query("UPDATE tbl_archivo set destacado= ? WHERE codigo_archivo = ?", [estado, id],
@@ -113,12 +116,13 @@ app.put("/destacado/:id/:estado", function(req, res) {
                 throw err
             } else {
                 console.log(response);
+                res.send(response);
             }
         });
 });
 
 //destacados
-app.get("/destacado", function(req, res) {
+app.get("/destacado", limitarRuta, function(req, res) {
     let usuario = req.session.passport.user;
     conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? AND destacado =?", [usuario, true], function(err, response) {
         if (err) {
@@ -130,7 +134,7 @@ app.get("/destacado", function(req, res) {
 });
 
 //papelera de reciclaje ********************************
-app.get("/papeleraReciclaje", function(req, res) {
+app.get("/papeleraReciclaje", limitarRuta, function(req, res) {
     let usuario = req.session.passport.user;
     conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE  condicion =0 AND codigo_propietario = ?", [usuario], function(err, resultado) {
         if (err) {
@@ -141,7 +145,6 @@ app.get("/papeleraReciclaje", function(req, res) {
     })
 })
 
-
 //<ELIMINAR> enviar a papelera******
 app.post("/enviaAPapelera", function(req, res) {
     let id = req.body.id;
@@ -150,10 +153,9 @@ app.post("/enviaAPapelera", function(req, res) {
             if (err) {
                 throw err
             } else {
-                console.log(response);
+                res.send(response);
             }
         });
-
 })
 
 //restaurar de la papelera****
@@ -164,12 +166,13 @@ app.post("/restaurarArchivo", function(req, res) {
             if (err) {
                 throw err
             } else {
-                console.log(response);
+                res.send(response);
             }
         });
 })
 
-app.get("/visualizarDestacados", function(req, res) {
+//visualizar destacados
+app.get("/visualizarDestacados", limitarRuta, function(req, res) {
     let propietario = req.session.passport.user;
     conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? AND destacado =?", [propietario, true],
         function(err, resultado) {
@@ -183,7 +186,7 @@ app.get("/visualizarDestacados", function(req, res) {
 })
 
 //Boton Eliminar archivo del Tablero de Mi Unidad****************************
-/*app.delete("/eliminarArchivo/:id", function(req, res) {
+app.delete("/eliminarArchivo/:id", function(req, res) {
     const { id } = req.params;
     console.log(id);
     conexion.query(
@@ -214,7 +217,7 @@ app.get("/visualizarDestacados", function(req, res) {
 
         }
     );
-})*/
+})
 
 //post
 app.post("/registrar", passport.authenticate("registroEstrategia", {
@@ -222,7 +225,7 @@ app.post("/registrar", passport.authenticate("registroEstrategia", {
     failureRedirect: "/registrar",
     failureflash: true
 }));
-
+//ruta login
 app.post("/login", passport.authenticate("loginEstrategia", {
     successRedirect: "/body",
     failureRedirect: "/login",
@@ -230,7 +233,8 @@ app.post("/login", passport.authenticate("loginEstrategia", {
 }));
 
 //FUNCIONES
-//funcion que no permite accesar a las demas rutas- la coloco en--app.get("/body", limitarRuta, function(req, res)
+//seguridad para las rutas
+//funcion que no permite accesar a las demas rutas- colocar en--app.get("/body", limitarRuta, function(req, res)
 function limitarRuta(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -241,7 +245,10 @@ function limitarRuta(req, res, next) {
 //Insertar Archivos (Editor CodeWrite)
 app.post("/codeWrite", function(req, res) {
     let codigoPropietario = req.session.passport.user;
-    const { nombre, codigoEditor } = req.body; //guardar nombre y contenido
+    const {
+        nombre,
+        codigoEditor
+    } = req.body; //guardar nombre y contenido
     let archivo = nombre.split(".");
     let extensionArchivo = archivo[archivo.length - 1];
     let nombreRuta = `${archivo[0]}-${new Date().getMilliseconds()}.${extensionArchivo}`
@@ -259,10 +266,6 @@ app.post("/codeWrite", function(req, res) {
         });
 });
 
-
-
-
 //Crear y levantar el servidor web.
 app.listen(4500);
 console.log("Servidor iniciado");
-////////////////////////////////////////ñ0

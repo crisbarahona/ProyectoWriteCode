@@ -21,35 +21,30 @@
     <link rel="stylesheet" href="theme/rubyblue.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilosEditor.css">
-    
-
-
     <!--Nombre de la pagina-->
     <title>Editor CodeWrite</title>
-
 </head>
-
+<!--Editor de codewrite utilizando codeMirror-->
 <body>
     <header class="text-center">
         <img src="img/logo2.png" width="75px" height="75px" class="mr-3 rounded-circle img-thumbnail ">
         <h3 class="text-center">Bienvenido al editor de CodeWrite</h3>
     </header>
-               
+    <!--mini formulario paara guardar archivos-->           
     <strong class="ml-3" >Ingrese el nombre del archivo</strong>
     <input type="text" class="form-control w-25 ml-3 mt-2" placeholder="Nombre de archivo" id="txt-nombreArchivo"><br>
     <button type="button" class="btn btn-success mb-3 ml-3" id="btn-guardar">Guardar archivo</button>
+    <!--editor-->
     <textarea id="txta-codeWrite">
 
     </textarea>
     
-    <!--Script que tengo que agregar-->
+    <!--Scripts-->
     <script src="js/jquery-3.3.1.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/bootstrap.min.js "></script>
     <script src="js/fontAwesome.min.js "></script>
     <script src="js/codeWrite.js"></script>
-    
-    
 </body>
 
 </html>

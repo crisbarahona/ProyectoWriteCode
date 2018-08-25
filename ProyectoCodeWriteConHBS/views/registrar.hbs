@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <title>Registrar Usuario</title>
     <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--tengo que agregar-->
+    <!--agregar-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
 
-
-
 </head>
-
-
 <body class="fondo-registrar">
     <div class="container">
         <div class="row">
@@ -22,24 +17,37 @@
                 <div class="jumbotron margin-jumbotron ">
                     <h2 class="display-5 mb-3">Crea tu cuenta para Write Code</h2>
                     <p class="lead mb-4">para continuar, ingresa la siguiente informacion</p>
-
-                    <form action="/registrar" method="POST">
+                    <!--Formulario de Registrar-->
+                    <form action="/registrar" method="POST" class="needs-validation" novalidate>
                         <div class="form-group row">
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="input-group-prepend ">
-                                    <span class="input-group-text "> <i class="fas fa-user-edit "></i></span>
-                                    <input type="text" class="form-control " placeholder="Nombre" name="nombre" id="nombre">
-                                    <!--<div id="mensaje1" class="errores">Ingrese su nombre</div>-->
-                                    <!--<div class="valid-feedback">Es bien</div>
-                                    <div class="invalid-feedback">Esta mal</div>-->
+                                    <span class="input-group-text ">
+                                        <i class="fas fa-user-edit "></i>
+                                    </span>
+                                    <!--caja de text de nombre-->
+                                    <input type="text" class="form-control " placeholder="Nombre" name="nombre" id="nombre" required>
+                                    <div class="valid-feedback">
+                                        nombre correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        ingrese su nombre!
+                                    </div>
                                 </div>
                             </div>
-
+                            <!--caja de text de apellido-->
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="input-group-prepend ">
-                                    <span class="input-group-text "> <i class="fas fa-user-edit"></i></span>
-                                    <input type="text" class="form-control " placeholder="Apellido" name="apellido" id="apellido">
-                                    <!--<div id="mensaje2" class="errores">Ingrese su Apellido</div>-->
+                                    <span class="input-group-text ">
+                                        <i class="fas fa-user-edit"></i>
+                                    </span>
+                                    <input type="text" class="form-control " placeholder="Apellido" name="apellido" id="apellido" required>
+                                    <div class="valid-feedback">
+                                        apellido correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        ingrese su apellido!
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,46 +55,54 @@
                         <div class="form-group row">
                             <div class="col mb-3">
                                 <div class="input-group-prepend ">
-                                    <span class="input-group-text "> <i class="fas fa-envelope "></i></span>
-                                    <input type="text" class="form-control" placeholder="Correo electronico" name="correoElectronico" id="correoElectronico">
-                                    <!--<div id="mensaje3" class="errores">Ingrese su Correo Electronico</div>-->
+                                    <span class="input-group-text ">
+                                        <i class="fas fa-envelope "></i>
+                                    </span>
+                                    <!--caja de text de correo electronico-->
+                                    <input type="text" class="form-control" placeholder="Correo electronico" name="correoElectronico" id="correoElectronico"
+                                        required>
+                                        <div class="valid-feedback">
+                                        correo electronico correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        ingrese su su correo electronico!
+                                    </div>
+                                    
                                 </div>
                             </div>
-
+                            <!--caja de text de contraseña-->
                             <div class="col mb-3">
                                 <div class="input-group-prepend ">
-                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
-                                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" id="contrasena">
-                                    <!--<div id="mensaje4" class="errores">Ingrese su contraseña</div>-->
+                                    <span class="input-group-text ">
+                                        <i class="fas fa-key "></i>
+                                    </span>
+                                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" id="contrasena" required>
+                                    <div class="valid-feedback">
+                                        contraseña correcto!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        ingrese una contraseña!
+                                    </div>
                                 </div>
                             </div>
-
-                            <!--<div class="col mb-3">
-                                <div class="input-group-prepend ">
-                                    <span class="input-group-text "><i class="fas fa-key "></i></span>
-                                    <input type="password" class="form-control" placeholder="Confirmar contraseña" name="confirmarContrasena" id="confirmarContrasena">
-                                </div>
-                            </div>-->
                         </div>
-
+                        <!--boton de registrar-->
                         <div class="row justify-content-center">
                             <div class="col-12 col-sm-9 col-md-4">
-                                <button  type="submit" class="btn btn-primary btn-block" id="btnRegistrar ">Registrar</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="btnRegistrar ">Registrar</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
-    <!--Script que tengo que agregar-->
+    <!-- agregar-->
     <script src="js/jquery-3.3.1.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/bootstrap.min.js "></script>
     <script src="js/fontAwesome.min.js "></script>
-    <script src="js/controlador.js"></script>
-    <!--<script src="../passport/passport.js"></script>-->
+    <script src="js/validaciones.js"></script>
 </body>
 
 </html>
