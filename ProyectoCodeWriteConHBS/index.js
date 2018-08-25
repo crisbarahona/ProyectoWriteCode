@@ -60,10 +60,10 @@ app.get("/registrar", function(req, res) {
 });
 
 app.get("/body", limitarRuta, function(req, res) {
-    res.render("body");
+    res.render("body", { user: req.user });
 });
 
-//ruta del editor--codeWrite
+//ruta del editor--codeWrite 
 app.get("/codeWrite", function(req, res) {
     res.render("codeWrite");
 });
@@ -71,7 +71,7 @@ app.get("/codeWrite", function(req, res) {
 app.get("/miUnidad", function(req, res) {
     let codigoUsuario = req.session.passport.user;
     conexion.query(
-        "SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion FROM tbl_archivo WHERE codigo_propietario = ?", [codigoUsuario],
+        "SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ?", [codigoUsuario],
         function(err, resultado) {
             if (err) {
                 throw err;
@@ -82,6 +82,44 @@ app.get("/miUnidad", function(req, res) {
         }
     );
 });
+
+//Actualizar
+app.put("/destacado/:id/:estado", function(req, res) {
+    let id = req.params.id;
+    let estado = req.params.estado;
+    conexion.query("UPDATE tbl_archivo set destacado= ? WHERE codigo_archivo = ?", [estado, id],
+        function(err, response) {
+            if (err) {
+                throw err
+            } else {
+                console.log(response);
+            }
+        });
+});
+
+app.get("/destacado", function(req, res) {
+    let usuario = req.session.passport.user;
+    conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? AND destacado =?", [usuario, true], function(err, response) {
+        if (err) {
+            throw err
+        } else {
+            res.send(resultado);
+        }
+    });
+});
+
+app.get("/visualizarDestacados", function(req, res) {
+    let propietario = req.session.passport.user;
+    conexion.query("SELECT codigo_archivo, codigo_propietario, nombre_archivo, fecha_creacion, destacado FROM tbl_archivo WHERE codigo_propietario = ? AND destacado =?", [propietario, true],
+        function(err, resultado) {
+            if (err) {
+                throw err
+            } else {
+                console.log(resultado);
+                res.send(resultado);
+            }
+        })
+})
 
 //Boton Eliminar archivo del Tablero de Mi Unidad
 app.delete("/eliminarArchivo/:id", function(req, res) {
@@ -159,6 +197,9 @@ app.post("/codeWrite", function(req, res) {
             }
         });
 });
+
+
+
 
 //Crear y levantar el servidor web.
 app.listen(4500);

@@ -22,8 +22,8 @@ btnGuardar.addEventListener("click", function() {
         data: parametros,
         method: "POST",
         success: function(respuesta) {
+            window.location.href = "/body";
             console.log(respuesta);
-            setTimeout(function() { editorCodeWrite.setValue(respuesta.informacion); }, 3000);
         }
     })
 })
