@@ -11,6 +11,15 @@ const flash = require('connect-flash');
 const mysql = require('mysql');
 const fs = require("fs");
 
+const http = require("http");
+const socketIO = require("socket.io");
+const server = http.createServer(app);
+const io = socketIO.listen(server);
+
+
+//mantiene conexion y comunicacion con el backend
+require("./sockets")(io);
+app.use(express.static("public"));
 //Conexion a base de datos
 const conexion = mysql.createConnection({
     host: "localhost",
@@ -18,6 +27,8 @@ const conexion = mysql.createConnection({
     password: "",
     database: "db_writecode"
 });
+
+
 
 require("./passport/passport")(passport);
 //Exponer una carpeta como publica, unicamente para archivos estaticos: .html, imagenes, .css, .js
@@ -48,6 +59,10 @@ app.get('/logout', function(req, res) {
 })
 
 //RUTAS-------renderizando la vistas
+app.get("/chat", function(req, res) {
+    res.render("chat");
+});
+
 app.use(require("./cargar.js"));
 //get
 app.get("/", function(req, res) {

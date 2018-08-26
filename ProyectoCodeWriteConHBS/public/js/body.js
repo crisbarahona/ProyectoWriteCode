@@ -29,7 +29,7 @@ function cargarTablero() {
                         </td>
 
                         <td>
-                            <button class="btn btn-primary verArchivo" >Ver mas</button>
+                            <button class="btn btn-primary verArchivo" >Modificar</button>
 
                             <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Papelera</button>
 
@@ -219,7 +219,7 @@ $("#destacado").click(function() {
                         </td>
 
                         <td>
-                            <button class="btn btn-primary verArchivo" >Ver mas</button>
+                            <button class="btn btn-primary verArchivo" >Modificar</button>
                             <button idEliminar=${respuesta.codigo_archivo} " class="btn btn-danger eliminarArchivo">Papelera</button>
                             <button idDestacado=${respuesta.codigo_archivo} type="button" class="btn destacado btn-warning">Destacado</button>
                             <button idDescargar=${respuesta.codigo_archivo} type="button" class="btn btn-secondary ">Descargar</button>
